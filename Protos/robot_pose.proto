@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package robot_pose;
+
+message GetPoseReply {
+  string id = 1;
+  double x = 2;
+  double y = 3;
+  double z = 4;
+  double qx = 5;
+  double qy = 6;
+  double qz = 7;
+  double qw = 8;
+
+}
+
+message GetPoseRequest {
+    string id = 1;
+  }
+
+
+
+service Pose {
+    rpc GetPose(GetPoseRequest) returns (GetPoseReply);
+
+}
