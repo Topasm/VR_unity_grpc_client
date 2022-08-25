@@ -14,9 +14,17 @@ using Valve.VR;
 
 public class JoyGrpcSendScript : MonoBehaviour
 {
+
+    void Start();
+    {
+        
+    }
+
     private void FixedUpdate()
     {
+        Start();
         GetData();
+        SendPosition();
 
     }
 
@@ -24,13 +32,13 @@ public class JoyGrpcSendScript : MonoBehaviour
     public Channel channel;
     public Vector3 vPosition;
     public Quaternion qRotation;
+
     void GetData()
     {
 
      vPosition = poseActionR[SteamVR_Input_Sources.RightHand].localPosition;
      qRotation = poseActionR[SteamVR_Input_Sources.RightHand].localRotation;
-    Debug.Log(vPosition);
-    Debug.Log(qRotation);
+
     }
 
 
@@ -39,7 +47,7 @@ public class JoyGrpcSendScript : MonoBehaviour
     void Start()
     {
         channel =  new Channel("192.168.0.4:50051", ChannelCredentials.Insecure);
-        // call = PoseClient.GetPose();
+        call = PoseClient.GetPose();
         
     }
 
@@ -47,12 +55,17 @@ public class JoyGrpcSendScript : MonoBehaviour
 
     private async Task SendPosition()
     {
-        Vector3 tmp = vPosition;
-        var px = tmp.x;
-        var py = tmp.y;
-        var pz = tmp.z;
+        Vector3 tmpPose = vPosition;
+        var px = tmpPose.x;
+        var py = tmpPose.y;
+        var pz = tmpPose.z;
+        Quaternion tmpRot = qRotation;
+        var rx = tempRot.x;
+        var ry = tempRot.y;
+        var rz = tempRot.z;
+        var rw = tempRot.w;
         Debug.Log(px);
-        // await call.GetPose.WriteAsync(req);
+       
 
     }
 
