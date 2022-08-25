@@ -11,11 +11,30 @@ using RobotPose;
 using Valve.VR;
 
 
-[RequireComponent(typeof(SteamVR_Behaviour_Pose))]
+
 public class JoyGrpcSendScript : MonoBehaviour
 {
+    private void FixedUpdate()
+    {
+        GetData();
+
+    }
+
+    public SteamVR_Action_Pose poseActionR = SteamVR_Input.GetAction<SteamVR_Action_Pose>("Pose");
     public Channel channel;
-    public SteamVR_Behaviour_Pose VRpose;
+    public Vector3 vPosition;
+    public Quaternion qRotation;
+    void GetData()
+    {
+
+     vPosition = poseActionR[SteamVR_Input_Sources.RightHand].localPosition;
+     qRotation = poseActionR[SteamVR_Input_Sources.RightHand].localRotation;
+    Debug.Log(vPosition);
+    Debug.Log(qRotation);
+    }
+
+
+
 
     void Start()
     {
@@ -24,21 +43,15 @@ public class JoyGrpcSendScript : MonoBehaviour
         
     }
 
-    void Update()
-    {
-        
-        VRpose = gameObject.GetComponent<SteamVR_Behaviour_Pose>();
-        VRpose.UpdateTransform();
-    
-    }
+
 
     private async Task SendPosition()
     {
-        Vector3 tmp = VRpose.transform.position;
+        Vector3 tmp = vPosition;
         var px = tmp.x;
         var py = tmp.y;
         var pz = tmp.z;
-        var req = new GetPose{Id = "r", x=px, y=  py, z= pz};
+        Debug.Log(px);
         // await call.GetPose.WriteAsync(req);
 
     }
