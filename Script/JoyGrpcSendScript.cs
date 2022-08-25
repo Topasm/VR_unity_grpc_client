@@ -15,10 +15,7 @@ using Valve.VR;
 public class JoyGrpcSendScript : MonoBehaviour
 {
 
-    void Start();
-    {
-        
-    }
+
 
     private void FixedUpdate()
     {
@@ -47,7 +44,7 @@ public class JoyGrpcSendScript : MonoBehaviour
     void Start()
     {
         channel =  new Channel("192.168.0.4:50051", ChannelCredentials.Insecure);
-        call = PoseClient.GetPose();
+        // call = PoseClient.GetPose();
         
     }
 
@@ -60,10 +57,10 @@ public class JoyGrpcSendScript : MonoBehaviour
         var py = tmpPose.y;
         var pz = tmpPose.z;
         Quaternion tmpRot = qRotation;
-        var rx = tempRot.x;
-        var ry = tempRot.y;
-        var rz = tempRot.z;
-        var rw = tempRot.w;
+        var rx = tmpRot.x;
+        var ry = tmpRot.y;
+        var rz = tmpRot.z;
+        var rw = tmpRot.w;
         Debug.Log(px);
        
 
