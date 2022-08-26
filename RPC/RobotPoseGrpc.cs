@@ -8,9 +8,9 @@
 using grpc = global::Grpc.Core;
 
 namespace RobotPose {
-  public static partial class Pose
+  public static partial class Position
   {
-    static readonly string __ServiceName = "robot_pose.Pose";
+    static readonly string __ServiceName = "robot_pose.Position";
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static void __Helper_SerializeMessage(global::Google.Protobuf.IMessage message, grpc::SerializationContext context)
@@ -46,17 +46,17 @@ namespace RobotPose {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::RobotPose.GetPoseRequest> __Marshaller_robot_pose_GetPoseRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::RobotPose.GetPoseRequest.Parser));
+    static readonly grpc::Marshaller<global::RobotPose.GetPoseSend> __Marshaller_robot_pose_GetPoseSend = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::RobotPose.GetPoseSend.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::RobotPose.GetPoseReply> __Marshaller_robot_pose_GetPoseReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::RobotPose.GetPoseReply.Parser));
+    static readonly grpc::Marshaller<global::RobotPose.GetPoseAck> __Marshaller_robot_pose_GetPoseAck = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::RobotPose.GetPoseAck.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::RobotPose.GetPoseRequest, global::RobotPose.GetPoseReply> __Method_GetPose = new grpc::Method<global::RobotPose.GetPoseRequest, global::RobotPose.GetPoseReply>(
+    static readonly grpc::Method<global::RobotPose.GetPoseSend, global::RobotPose.GetPoseAck> __Method_GetPose = new grpc::Method<global::RobotPose.GetPoseSend, global::RobotPose.GetPoseAck>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetPose",
-        __Marshaller_robot_pose_GetPoseRequest,
-        __Marshaller_robot_pose_GetPoseReply);
+        __Marshaller_robot_pose_GetPoseSend,
+        __Marshaller_robot_pose_GetPoseAck);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -64,58 +64,58 @@ namespace RobotPose {
       get { return global::RobotPose.RobotPoseReflection.Descriptor.Services[0]; }
     }
 
-    /// <summary>Client for Pose</summary>
-    public partial class PoseClient : grpc::ClientBase<PoseClient>
+    /// <summary>Client for Position</summary>
+    public partial class PositionClient : grpc::ClientBase<PositionClient>
     {
-      /// <summary>Creates a new client for Pose</summary>
+      /// <summary>Creates a new client for Position</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public PoseClient(grpc::ChannelBase channel) : base(channel)
+      public PositionClient(grpc::ChannelBase channel) : base(channel)
       {
       }
-      /// <summary>Creates a new client for Pose that uses a custom <c>CallInvoker</c>.</summary>
+      /// <summary>Creates a new client for Position that uses a custom <c>CallInvoker</c>.</summary>
       /// <param name="callInvoker">The callInvoker to use to make remote calls.</param>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public PoseClient(grpc::CallInvoker callInvoker) : base(callInvoker)
+      public PositionClient(grpc::CallInvoker callInvoker) : base(callInvoker)
       {
       }
       /// <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      protected PoseClient() : base()
+      protected PositionClient() : base()
       {
       }
       /// <summary>Protected constructor to allow creation of configured clients.</summary>
       /// <param name="configuration">The client configuration.</param>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      protected PoseClient(ClientBaseConfiguration configuration) : base(configuration)
+      protected PositionClient(ClientBaseConfiguration configuration) : base(configuration)
       {
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::RobotPose.GetPoseReply GetPose(global::RobotPose.GetPoseRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::RobotPose.GetPoseAck GetPose(global::RobotPose.GetPoseSend request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return GetPose(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::RobotPose.GetPoseReply GetPose(global::RobotPose.GetPoseRequest request, grpc::CallOptions options)
+      public virtual global::RobotPose.GetPoseAck GetPose(global::RobotPose.GetPoseSend request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_GetPose, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::RobotPose.GetPoseReply> GetPoseAsync(global::RobotPose.GetPoseRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::RobotPose.GetPoseAck> GetPoseAsync(global::RobotPose.GetPoseSend request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return GetPoseAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::RobotPose.GetPoseReply> GetPoseAsync(global::RobotPose.GetPoseRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::RobotPose.GetPoseAck> GetPoseAsync(global::RobotPose.GetPoseSend request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_GetPose, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      protected override PoseClient NewInstance(ClientBaseConfiguration configuration)
+      protected override PositionClient NewInstance(ClientBaseConfiguration configuration)
       {
-        return new PoseClient(configuration);
+        return new PositionClient(configuration);
       }
     }
 

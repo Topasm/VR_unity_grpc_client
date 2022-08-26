@@ -29,6 +29,7 @@ public class JoyGrpcSendScript : MonoBehaviour
     public Channel channel;
     public Vector3 vPosition;
     public Quaternion qRotation;
+    
 
     void GetData()
     {
@@ -44,6 +45,9 @@ public class JoyGrpcSendScript : MonoBehaviour
     void Start()
     {
         channel =  new Channel("192.168.0.4:50051", ChannelCredentials.Insecure);
+        var client = new Position.PositionClient(channel);
+        //var responce = await client.GetPoseAck();
+
         // call = PoseClient.GetPose();
         
     }
@@ -61,6 +65,7 @@ public class JoyGrpcSendScript : MonoBehaviour
         var ry = tmpRot.y;
         var rz = tmpRot.z;
         var rw = tmpRot.w;
+        var send = new RobotPose.GetPoseSend{Id = "unity", X = px, Y = py, Z= pz, Qx= rx, Qy=ry, Qz= rz, Qw =  rw};
         Debug.Log(px);
        
 

@@ -2,7 +2,12 @@ syntax = "proto3";
 
 package robot_pose;
 
-message GetPoseReply {
+message GetPoseAck {
+  bool success = 1;
+
+}
+
+message GetPoseSend {
   string id = 1;
   double x = 2;
   double y = 3;
@@ -11,16 +16,11 @@ message GetPoseReply {
   double qy = 6;
   double qz = 7;
   double qw = 8;
-
-}
-
-message GetPoseRequest {
-    string id = 1;
   }
 
 
 
-service Pose {
-    rpc GetPose(GetPoseRequest) returns (GetPoseReply);
+service Position {
+    rpc GetPose(GetPoseSend) returns (GetPoseAck);
 
 }
