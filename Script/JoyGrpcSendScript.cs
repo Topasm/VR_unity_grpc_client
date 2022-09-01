@@ -28,14 +28,14 @@ public class JoyGrpcSendScript : MonoBehaviour
     public SteamVR_Action_Pose poseActionR = SteamVR_Input.GetAction<SteamVR_Action_Pose>("Pose");
     public Channel channel;
     public Vector3 vPosition;
-    public Quaternion qRotation;
+    public Vector3 qRotation;
     
 
     void GetData()
     {
 
-     vPosition = poseActionR[SteamVR_Input_Sources.RightHand].localPosition;
-     qRotation = poseActionR[SteamVR_Input_Sources.RightHand].localRotation;
+     vPosition = velocity[SteamVR_Input_Sources.RightHand].localPosition;
+     qRotation = angularVelocity[SteamVR_Input_Sources.RightHand].localRotation;
 
     }
 
@@ -61,12 +61,12 @@ public class JoyGrpcSendScript : MonoBehaviour
         var px = tmpPose.x;
         var py = tmpPose.y;
         var pz = tmpPose.z;
-        Quaternion tmpRot = qRotation;
+        Vector3 tmpRot = qRotation;
         var rx = tmpRot.x;
         var ry = tmpRot.y;
         var rz = tmpRot.z;
-        var rw = tmpRot.w;
-        var send = new RobotPose.GetPoseSend{Id = "unity", X = px, Y = py, Z= pz, Qx= rx, Qy=ry, Qz= rz, Qw =  rw};
+        #var rw = tmpRot.w;
+        var send = new RobotPose.GetPoseSend{Id = "unity", X = px, Y = py, Z= pz, Qx= rx, Qy=ry, Qz= rz, Qw =  0};
         var responce = await client.GetPoseAsync(send);
         Debug.Log(px);
        
