@@ -34,8 +34,8 @@ public class JoyGrpcSendScript : MonoBehaviour
     void GetData()
     {
 
-     vPosition = velocity[SteamVR_Input_Sources.RightHand].localPosition;
-     qRotation = angularVelocity[SteamVR_Input_Sources.RightHand].localRotation;
+     vPosition = velocity[SteamVR_Input_Sources.RightHand].velocity;
+     qRotation = angularVelocity[SteamVR_Input_Sources.RightHand].angularVelocity;
 
     }
 
